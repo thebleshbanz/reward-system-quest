@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Traits\UserTrait;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    use UserTrait;
+
+    public function referrals(){
+        $user = Auth::user();
+        $children = $user->with('children')->get();
+        dd($children[0]->name);
+    }
 }

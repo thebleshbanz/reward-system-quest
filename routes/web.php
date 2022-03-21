@@ -24,7 +24,7 @@ Route::get('/subscriptions', [SubscriptionController::class, 'index'] )->middlew
 
 Route::post('/user_subscription', [SubscriptionController::class, 'userSubscription'] )->middleware(['auth'])->name('user_subscription');
 
+Route::get('user/referrals', [UserController::class, 'referrals'])->middleware(['auth'])->name('user_referrals');
+
 require __DIR__.'/auth.php';
 
-
-Route::resource('users', UserController::class);

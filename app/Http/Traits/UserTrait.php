@@ -25,17 +25,4 @@ trait UserTrait {
         // return view('welcome')->with(compact('student'));
     }
 
-    public function checkReferralCode($user_request)
-    {
-        
-        $res = User::where('referral_code', $user_request->referral_code)->first();
-
-        dd($res);
-
-        if(!empty($res)){
-            return $res;
-        }else{
-            return 0;
-        }
-    }
 }

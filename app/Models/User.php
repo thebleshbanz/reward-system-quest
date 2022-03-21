@@ -15,6 +15,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    var $parent, $children;
+
     /**
      * The table associated with the model.
      *
@@ -62,11 +64,11 @@ class User extends Authenticatable
 
     public function parent()
     {
-        return $this->belongsTo(User::class, 'referred_by');
+        return $this->belongsTo(User::class, 'referred_by', 'id');
     }
 
     public function children()
     {
-        return $this->hasMany(User::class, 'referred_by');
+        return $this->hasMany(User::class, 'referred_by', 'id');
     }
 }
